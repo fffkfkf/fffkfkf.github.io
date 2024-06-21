@@ -9,27 +9,11 @@
         let theme = localStorage.getItem("meek_theme") || "light";
         document.documentElement.setAttribute("data-color-mode", theme);
     </script>
-<meta name="description" content="yemian1
-yemian1
-yemian1
-
-
-
-
-
-
-yemian1。">
+<meta name="description" content="总体概念
+先学spark，flink这俩框架，再学组件，组件的先后顺序：kafka、zk、flume、hbase，最后学数仓建模、OLAP框架（doris、ck）、数据湖（hudi、iceberg）。">
 <meta property="og:title" content="大数据相关">
-<meta property="og:description" content="yemian1
-yemian1
-yemian1
-
-
-
-
-
-
-yemian1。">
+<meta property="og:description" content="总体概念
+先学spark，flink这俩框架，再学组件，组件的先后顺序：kafka、zk、flume、hbase，最后学数仓建模、OLAP框架（doris、ck）、数据湖（hudi、iceberg）。">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://fffkfkf.github.io/post/da-shu-ju-xiang-guan.html">
 <meta property="og:image" content="https://github.githubassets.com/favicons/favicon.svg">
@@ -88,9 +72,47 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 </div>
 </div>
     <div id="content">
-<div class="markdown-body" id="postBody"><p>yemian1<br>
-yemian1<br>
-yemian1</p>
+<div class="markdown-body" id="postBody"><p>总体概念<br>
+先学spark，flink这俩框架，再学组件，组件的先后顺序：kafka、zk、flume、hbase，最后学数仓建模、OLAP框架（doris、ck）、数据湖（hudi、iceberg）。学这些的前提是已经会了linux、java、scala、hadoop、hive、mysql 。</p>
+<p>分概念<br>
+Azure ，<br>
+现称为Microsoft Azure，是微软提供的云计算平台, 类似于阿里云.<br>
+Microsoft Azure是微软基于云计算的操作系统，原名“Windows Azure”。<br>
+主要目标是为开发者提供一个平台，帮助开发可运行在云服务器、数据中心、Web和PC上的应用程序。</p>
+<p>Ambari<br>
+Apache Ambari 项目旨在通过开发用于配置，管理和监控Apache Hadoop集群的软件来简化Hadoop管理。Ambari提供了一个直观，易用的Hadoop管理Web UI。</p>
+<p>Spark和Hadoop的区别<br>
+Spark，是分布式计算平台，是一个用scala语言编写的计算框架，基于内存的快速、通用、可扩展的大数据分析引擎.<br>
+Hadoop，是分布式管理、存储、计算的生态系统；包括HDFS（存储）、MapReduce（计算）、Yarn（资源调度）.<br>
+Hadoop一个作业称为一个Job，Job里面分为Map Task和Reduce Task阶段，每个Task都在自己的进程中运行，当Task结束时，进程也会随之结束；<br>
+Spark用户提交的任务称为application，一个application对应一个SparkContext，app中存在多个job，每触发一次action操作就会产生一个job.</p>
+<p>(1)Hadoop 可以使用廉价的、异构的机器来做分布式存储与计算，但是，Spark 对硬件的要求稍高一些，对内存与 CPU 有一定的要求<br>
+（2）Spark没有提供文件管理系统，所以，它必须和其他的分布式文件系统进行集成才能运作，它只是一个计算分析框架，专门用来对分布式存储的数据进行计算处理，它本身并不能存储数据；<br>
+（3）Spark可以使用Hadoop的HDFS或者其他云数据平台进行数据存储，但是一般使用HDFS；<br>
+（4）Spark可以使用基于HDFS的HBase数据库，也可以使用HDFS的数据文件，还可以通过jdbc连接使用Mysql数据库数据；Spark可以对数据库数据进行修改删除，而HDFS只能对数据进行追加和全表删除；<br>
+（5）Spark数据处理速度秒杀Hadoop中MR；</p>
+<p>Hadoop适合处理离线的静态的大数据；<br>
+Spark适合处理离线的流式的大数据；<br>
+Storm/Flink适合处理在线的实时的大数据。<br>
+历程:<br>
+第 1 代：Hadoop MapReduc 批处理 Mapper、Reducer 2；<br>
+第 2 代：DAG 框架（Oozie 、Tez），Tez + MapReduce 批处理 1 个 Tez = MR(1) + MR(2) + ... + MR(n) 相比 MR 效率有所提升；<br>
+第 3 代：Spark 批处理、流处理、SQL 高层 API 支持 自带 DAG 内存迭代计算、性能较之前大幅提；<br>
+第 4 代：Flink 批处理、流处理、SQL 高层 API 支持 自带 DAG 流式计算性能更高、可靠性更高。<br>
+hive<br>
+hive是基于Hadoop的一个数据仓库工具，用来进行数据提取、转化、加载，这是一种可以存储、查询和分析存储在Hadoop中的大规模数据的机制。hive数据仓库工具能将结构化的数据文件( hdfs,  hbase里的数据 )映射为一张数据库表，并提供SQL查询功能，能将SQL语句转变成MapReduce任务来执行.<br>
+sqoop<br>
+能够将数据从数据存储空间（数据仓库，系统文档存储空间，关系型数据库）导入 Hadoop 的 HDFS或列式数据库HBase，供 MapReduce 分析数据使用，也可以被 Hive 等工具使用。当 MapReduce 分析出结果数据后，Sqoop 可以将结果数据导出到数据存储空间，供其他客户端调用查看结果。</p>
+<p>tez<br>
+tez是支持DAG作业的开源计算框架，它可以将多个有依赖的作业转换为一个作业从而大幅提升DAG 作业的性能。<br>
+Tez源于MapReduce框架，核心思想是将Map和Reduce两个操作进一步拆分，即Map被拆分成Input、Processor、Sort、Merge和Output， Reduce被拆分成Input、Shuffle、Sort、Merge、Processor和Output等，这样，这些分解后的元操作可以灵活组合，产生新的操作，这些操作经过一些控制程序组装后，可形成一个大的DAG作业。<br>
+MR，TEZ，SPARK<br>
+MR，TEZ，SPARK都是计算框架，又可以共同存在，肯定各有各的特长。<br>
+MR：MR的初衷是让廉价的，配置低的服务器运行任务。核心思想是分而治之。大任务分解成小任务。这样就造成了MR比较慢。任务多申请资源耗时，跑任务中间结果要落磁盘耗时。<br>
+TEZ：MapReduce模型虽然很厉害，但是它不够的灵活，一个简单的join都需要很多操作才能完成，又是加标签又是笛卡尔积。 Tez采用了DAG（有向无环图）来组织MR任务（DAG中一个节点就是一个RDD，边表示对RDD的操作）。它的核心思想是把将Map任务和Reduce任务进一步拆分，Map任务拆分为Input-Processor-Sort-Merge-Output，Reduce任务拆分为Input-Shuffer-Sort-Merge-Process-output，Tez将若干小任务灵活重组，形成一个大的DAG作业。有了DAG执行图，才能将任务重组。<br>
+SPARK：Spark 是专为大规模数据处理而设计的快速通用的计算引擎。Spark拥有Hadoop MapReduce所具有的优点，Spark在Job中间输出结果可以保存在内存中，从而不再需要读写HDFS，因此Spark性能以及运算速度高于MapReduce。Spark也拥有DAG，也可以根据依赖关系优化任务，也充分运用内存避免中间结果落盘。但Spark集群是一个大的解决方案，如果有很多大的，很重要的任务跑在Spark集群。再将Spark集成在Hive上处理比较多的查询任务。对Spark集群的维护不利。<br>
+zk大数据</p>
+<p>hdfs</p>
 <p>yemian1</p></div>
 <div style="font-size:small;margin-top:8px;float:right;"></div>
 <button class="btn btn-block" type="button" onclick="openComments()" id="cmButton">评论</button>

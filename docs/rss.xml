@@ -1,13 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>Blog Title</title><link>https://fffkfkf.github.io</link><description>Blog description</description><copyright>Blog Title</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://github.githubassets.com/favicons/favicon.svg</url><title>avatar</title><link>https://fffkfkf.github.io</link></image><lastBuildDate>Fri, 21 Jun 2024 03:01:56 +0000</lastBuildDate><managingEditor>Blog Title</managingEditor><ttl>60</ttl><webMaster>Blog Title</webMaster><item><title>记录2</title><link>https://fffkfkf.github.io/post/ji-lu-2.html</link><description>![image](https://github.com/fffkfkf/fffkfkf.github.io/assets/41907028/a67ff977-eb2c-4a9d-9a9b-3c4b17bb5908)&#13;
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>Blog Title</title><link>https://fffkfkf.github.io</link><description>Blog description</description><copyright>Blog Title</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://github.githubassets.com/favicons/favicon.svg</url><title>avatar</title><link>https://fffkfkf.github.io</link></image><lastBuildDate>Fri, 21 Jun 2024 03:04:00 +0000</lastBuildDate><managingEditor>Blog Title</managingEditor><ttl>60</ttl><webMaster>Blog Title</webMaster><item><title>记录2</title><link>https://fffkfkf.github.io/post/ji-lu-2.html</link><description>![image](https://github.com/fffkfkf/fffkfkf.github.io/assets/41907028/a67ff977-eb2c-4a9d-9a9b-3c4b17bb5908)&#13;
 &#13;
-记录图片和旅行。</description><guid isPermaLink="true">https://fffkfkf.github.io/post/ji-lu-2.html</guid><pubDate>Fri, 21 Jun 2024 02:54:12 +0000</pubDate></item><item><title>大数据相关</title><link>https://fffkfkf.github.io/post/da-shu-ju-xiang-guan.html</link><description>yemian1&#13;
-yemian1&#13;
-yemian1&#13;
-&#13;
-&#13;
-&#13;
-&#13;
-&#13;
-&#13;
-yemian1。</description><guid isPermaLink="true">https://fffkfkf.github.io/post/da-shu-ju-xiang-guan.html</guid><pubDate>Fri, 21 Jun 2024 02:49:35 +0000</pubDate></item></channel></rss>
+记录图片和旅行。</description><guid isPermaLink="true">https://fffkfkf.github.io/post/ji-lu-2.html</guid><pubDate>Fri, 21 Jun 2024 02:54:12 +0000</pubDate></item><item><title>大数据相关</title><link>https://fffkfkf.github.io/post/da-shu-ju-xiang-guan.html</link><description>总体概念&#13;
+先学spark，flink这俩框架，再学组件，组件的先后顺序：kafka、zk、flume、hbase，最后学数仓建模、OLAP框架（doris、ck）、数据湖（hudi、iceberg）。</description><guid isPermaLink="true">https://fffkfkf.github.io/post/da-shu-ju-xiang-guan.html</guid><pubDate>Fri, 21 Jun 2024 02:49:35 +0000</pubDate></item></channel></rss>
