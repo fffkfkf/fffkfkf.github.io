@@ -23,10 +23,12 @@ jobs:
 
       - name: Get config.json
         run: |
+          set -euo pipefail
           echo "====== check config.josn file ======"
           cat config.json
           echo "====== check config.josn end  ======"
-          sudo apt-get install jq
+          sudo apt-get update
+          sudo apt-get install -y jq
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -35,19 +37,22 @@ jobs:
 
       - name: Clone source code
         run: |
+          set -euo pipefail
           GMEEK_VERSION=$(jq -r ".GMEEK_VERSION" config.json)
-          git clone https://github.com/Meekdai/Gmeek.git /opt/Gmeek;
+          git clone https://github.com/Meekdai/Gmeek.git /opt/Gmeek
           cd /opt/Gmeek/
-          lastTag=$(git describe --tags `git rev-list --tags --max-count=1`)
-          if [ $GMEEK_VERSION == 'last' ]; then git checkout $lastTag; else git checkout $GMEEK_VERSION; fi;
+          lastTag=$(git describe --tags "$(git rev-list --tags --max-count=1)")
+          if [ "$GMEEK_VERSION" == 'last' ]; then git checkout "$lastTag"; else git checkout "$GMEEK_VERSION"; fi
 
       - name: Install dependencies
         run: |
+          set -euo pipefail
           pip install --upgrade pip
           pip install -r /opt/Gmeek/requirements.txt
 
       - name: Generate new html
         run: |
+          set -euo pipefail
           cp -r ./* /opt/Gmeek/
           cd /opt/Gmeek/
           python Gmeek.py ${{ secrets.GITHUB_TOKEN }} ${{ github.repository }} --issue_number '${{ github.event.issue.number }}'
@@ -57,11 +62,16 @@ jobs:
           
       - name: update html
         run: |
+          set -euo pipefail
           git config --local user.email "$(jq -r ".email" config.json)"
           git config --local user.name "${{ github.repository_owner }}"
           git add .
-          git commit -a -m '🎉auto update by Gmeek action' || echo "nothing to commit"
-          git push || echo "nothing to push"
+          if git diff --cached --quiet; then
+            echo "nothing to commit"
+          else
+            git commit -m '🎉auto update by Gmeek action'
+            git push
+          fi
           sleep 3
           
       - name: Upload artifact
